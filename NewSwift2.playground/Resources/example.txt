@@ -1,0 +1,6 @@
+_ [MUSIC]
+Stanford University.
+>> Okay, well, welcome to
+lecture four of CS193p,
+Stanford Winter of 2015.
+So, I've been doing
