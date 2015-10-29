@@ -16,31 +16,30 @@ extension CollectionType {
 }
 
 // Применим для массива [1, 2, 3, 4] - получаем массив [2, 4, 6, 8]
-let aArray = [1, 2, 3, 4].myMap({ $0 * 2 })
+let aArray = [1, 2, 3, 4].myMap{ $0 * 2 }
 print (aArray)
 
 // Применим для слайсов [1, 2, 3, 4] - получаем массив [32, 36, 40, 44, 48]
 let aArray2 = [10, 12, 14, 16, 18, 20, 22, 24, 26, 28]
-let aSlice = aArray2[3..<8].myMap({ $0 * 2 })
+let aSlice = aArray2[3..<8].myMap{ $0 * 2 }
 print (aSlice)
 
-// Применим для stride 5.stride(through: 15.6, by: 1.5) - получаем массив
-// ["5", "6", "8", "9", ...]
-let aStrideMap = 5.stride(through: 15.6, by: 1.5)
-                  .map(String.init)
-                  .myMap({ $0.componentsSeparatedByString(".").first!})
+// Применим для страйдов 5.stride(through: 15.6, by: 1.5) - получаем массив
+let aStride = 5.stride(through: 15.6, by: 1.5)
+let aStrideMap =  aStride.map{$0}.myMap{ Int.init($0 * 2)}
 print (aStrideMap)
 
 // Применим Dictionary - получаем массив значений
 var aDictionary = [10:"Есть", 12:"в", 14:"светлости", 16:"осенних", 18:"вечеров"]
-let aDictionaryMap = aDictionary.myMap({ $0.1 })
+let aDictionaryMap = aDictionary.myMap{ $0.1 }
 print (aDictionaryMap )
 
-// Получаем для Set([7, 12, 33, 4]) - массив[ 24, 14, 8, 66]
-let setMap = Set([7, 12, 33, 4]).myMap({ $0 * 2 })
+// Применим для Set([7, 12, 33, 4]) - получаем массив[ 24, 14, 8, 66]
+let setMap = Set([7, 12, 33, 4]).myMap{ $0 * 2 }
 print (setMap)
 
-var testString = "Прелесть".characters.myMap({String($0).uppercaseString + "_" })
+// Применим для String.characters - получаем массив строк
+var testString = "Прелесть".characters.myMap{String($0).uppercaseString + "_" }
 testString
 
 //2. shuffle() Swift 1.2
